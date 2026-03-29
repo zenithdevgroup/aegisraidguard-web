@@ -1,4 +1,4 @@
-\`jsx // Archivo: Dashboard.js // Este archivo debe estar dentro de la carpeta de componentes de tu proyecto React, por ejemplo: src/components/Dashboard.js
+ // Archivo: Dashboard.js // Este archivo debe estar dentro de la carpeta de componentes de tu proyecto React, por ejemplo: src/components/Dashboard.js
 
 import React, { useState, useEffect } from 'react';
 
