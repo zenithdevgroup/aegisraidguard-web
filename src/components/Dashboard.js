@@ -1,4 +1,4 @@
-`jsx // Archivo: Dashboard.js // Este archivo debe estar dentro de la carpeta de componentes de tu proyecto React, por ejemplo: src/components/Dashboard.js
+\`jsx // Archivo: Dashboard.js // Este archivo debe estar dentro de la carpeta de componentes de tu proyecto React, por ejemplo: src/components/Dashboard.js
 
 import React, { useState, useEffect } from 'react';
 
@@ -24,7 +24,15 @@ if (savedSecuritySettings) {
 
 }, []);
 
-useEffect(() => { localStorage.setItem('user', JSON.stringify(user)); localStorage.setItem('servers', JSON.stringify(servers)); localStorage.setItem('securitySettings', JSON.stringify(securitySettings)); }, [user, servers, securitySettings]);
+useEffect(() => { localStorage.setItem('user', JSON.stringify(user)); localStorage.setItem('servers', JSON.stringify(servers)); localStorage.setItem('securitySettings', JSON.stringify(securitySettings));
+
+// Actualizar estadísticas en vivo cuando cambian los servidores
+setStats(prevStats => ({
+  ...prevStats,
+  botStatus: servers.map(server => ({ id: server.id, status: server.active ? 'Activo' : 'Inactivo' })),
+}));
+
+}, [user, servers, securitySettings]);
 
 // Función para activar/desactivar protección de un servidor const toggleServerProtection = (id) => { setServers(servers.map(server => server.id === id ? { ...server, active: !server.active } : server)); };
 
@@ -100,3 +108,4 @@ return ( <div> <h1>Dashboard de Gestión de Servidores</h1>
 ); };
 
 export default Dashboard;
+
