@@ -1,18 +1,9 @@
 document.addEventListener('DOMContentLoaded', () => {
     const isDashboard = window.location.pathname.includes('dashboard');
-
     if (isDashboard) {
         initAuth();
         initNavigation();
         loadDynamicData();
-    }
-
-    // Botón de Logout
-    const logoutBtn = document.getElementById('logoutBtn');
-    if (logoutBtn) {
-        logoutBtn.addEventListener('click', () => {
-            sessionStorage.removeItem('arg_user');
-        });
     }
 });
 
@@ -41,83 +32,65 @@ function renderUserProfile(id, username, globalName, avatarHash) {
     document.getElementById('userName').textContent = globalName || username;
     document.getElementById('userId').textContent = `ID: ${id}`;
     const avatarEl = document.getElementById('userAvatar');
-    
     if (avatarHash) {
         avatarEl.src = `https://cdn.discordapp.com/avatars/${id}/${avatarHash}.png`;
     } else {
-        const defaultAvatarIndex = (BigInt(id) >> 22n) % 6n;
-        avatarEl.src = `https://cdn.discordapp.com/embed/avatars/${defaultAvatarIndex}.png`;
+        avatarEl.src = `https://cdn.discordapp.com/embed/avatars/0.png`;
     }
     avatarEl.style.display = 'block';
 }
 
 function initNavigation() {
-    const navLinks = document.querySelectorAll('.nav-links a[data-target]');
+    const links = document.querySelectorAll('.nav-links a[data-target]');
     const views = document.querySelectorAll('.view-section');
 
-    navLinks.forEach(link => {
+    links.forEach(link => {
         link.addEventListener('click', (e) => {
             e.preventDefault();
-            
-            // Actualizar clase activa en el menú
-            navLinks.forEach(nav => nav.classList.remove('active'));
+            links.forEach(l => l.classList.remove('active'));
             link.classList.add('active');
 
-            // Cambiar vista mostrada
-            const targetId = link.getAttribute('data-target');
-            views.forEach(view => {
-                view.classList.remove('active');
-                if(view.id === targetId) {
-                    view.classList.add('active');
-                }
+            const target = link.getAttribute('data-target');
+            views.forEach(v => {
+                v.classList.remove('active');
+                if (v.id === target) v.classList.add('active');
             });
         });
     });
 }
 
 function loadDynamicData() {
-    // Array simulando la respuesta de la API de Discord/Bot
-    const userServers = [
-        { id: '1', name: 'Comunidad Alpha', icon: 'CA', botPresent: true },
-        { id: '2', name: 'Dev Hub', icon: 'DH', botPresent: true },
-        { id: '3', name: 'Gaming Lounge', icon: 'GL', botPresent: false },
-        { id: '4', name: 'Crypto Trading', icon: 'CT', botPresent: true }
+    // Datos de ejemplo
+    const servers = [
+        { name: 'ARG Official', icon: '🛡️', active: true },
+        { name: 'Dev Server', icon: '💻', active: true },
+        { name: 'Community X', icon: '🌐', active: false }
     ];
 
-    const securityLogs = [
-        { date: 'Hoy, 14:32', server: 'Comunidad Alpha', threat: 'Spam Masivo Detectado', action: 'Usuarios Baneados (12)', status: 'success', statusText: 'Mitigado' },
-        { date: 'Hoy, 10:15', server: 'Crypto Trading', threat: 'Intento de Nuke (Borrado de canales)', action: 'Admin Despojado de Roles', status: 'success', statusText: 'Bloqueado' },
-        { date: 'Ayer, 22:40', server: 'Dev Hub', threat: 'Enlace Malicioso Detectado', action: 'Mensaje Eliminado', status: 'warning', statusText: 'Intervenido' }
+    const logs = [
+        { date: 'Hoy, 12:00', srv: 'ARG Official', threat: 'Raid Attempt', action: 'Locked', status: 'success' },
+        { date: 'Ayer, 21:30', srv: 'Dev Server', threat: 'Spam Burst', action: 'Muted', status: 'success' }
     ];
 
-    // Renderizar Servidores
-    document.getElementById('serversCount').textContent = userServers.filter(s => s.botPresent).length;
+    document.getElementById('serversCount').textContent = servers.filter(s => s.active).length;
     
-    const serversContainer = document.getElementById('serversContainer');
-    serversContainer.innerHTML = userServers.map(server => `
+    document.getElementById('serversContainer').innerHTML = servers.map(s => `
         <div class="server-item">
-            <div class="server-meta">
-                <div class="server-icon">${server.icon}</div>
-                <div>
-                    <div class="server-name">${server.name}</div>
-                    <div class="server-status">${server.botPresent ? 'Protección Activa' : 'No configurado'}</div>
-                </div>
+            <div style="display:flex; align-items:center; gap:10px;">
+                <div class="server-icon">${s.icon}</div>
+                <div><b>${s.name}</b><br><small>${s.active ? 'Activo' : 'Offline'}</small></div>
             </div>
-            <button class="${server.botPresent ? 'btn-sm btn-primary' : 'btn-sm btn-discord'}">
-                ${server.botPresent ? 'Configurar' : 'Invitar Bot'}
-            </button>
+            <button class="btn-sm ${s.active ? 'btn-primary' : 'btn-discord'}">${s.active ? 'Panel' : 'Invitar'}</button>
         </div>
     `).join('');
 
-    // Renderizar Logs
-    const logsContainer = document.getElementById('logsContainer');
-    logsContainer.innerHTML = securityLogs.map(log => `
+    document.getElementById('logsContainer').innerHTML = logs.map(l => `
         <tr>
-            <td style="color: var(--text-muted);">${log.date}</td>
-            <td style="font-weight: 500;">${log.server}</td>
-            <td><span class="badge danger">${log.threat}</span></td>
-            <td>${log.action}</td>
-            <td><span class="badge ${log.status}">${log.statusText}</span></td>
+            <td>${l.date}</td>
+            <td>${l.srv}</td>
+            <td><span class="badge danger">${l.threat}</span></td>
+            <td>${l.action}</td>
+            <td><span class="badge success">OK</span></td>
         </tr>
     `).join('');
 }
