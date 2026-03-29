@@ -4,135 +4,48 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>AegisRaidGuard</title>
-
-<style>
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background: #0b1220;
-  color: #e5e7eb;
-}
-
-/* NAV */
-nav {
-  display: flex;
-  justify-content: space-between;
-  padding: 20px 40px;
-  background: #020617;
-}
-
-nav h1 {
-  color: #38bdf8;
-}
-
-nav a {
-  color: #94a3b8;
-  margin-left: 20px;
-  text-decoration: none;
-}
-
-/* HERO */
-.hero {
-  text-align: center;
-  padding: 100px 20px;
-}
-
-.hero h2 {
-  font-size: 42px;
-  color: #38bdf8;
-}
-
-.hero p {
-  color: #94a3b8;
-}
-
-.btn {
-  display: inline-block;
-  margin-top: 20px;
-  padding: 12px 25px;
-  background: #38bdf8;
-  color: black;
-  border-radius: 8px;
-  text-decoration: none;
-}
-
-/* FEATURES */
-.features {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px,1fr));
-  gap: 20px;
-  padding: 40px;
-}
-
-.card {
-  background: #020617;
-  padding: 20px;
-  border-radius: 10px;
-}
-
-/* FOOTER */
-footer {
-  text-align: center;
-  padding: 30px;
-  color: #64748b;
-}
-</style>
+<link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
 <nav>
-  <h1>AegisRaidGuard</h1>
+  <h1>ARG</h1>
   <div>
-    <a href="#">Home</a>
-    <a href="#features">Features</a>
-    <a href="#invite">Invite</a>
+    <a href="/">Home</a>
+    <a href="/features.html">Features</a>
+    <a href="/invite.html">Invite</a>
   </div>
 </nav>
 
 <section class="hero">
-  <h2>Protect Your Server</h2>
-  <p>Advanced Anti-Raid Protection for Discord</p>
-
-  <a class="btn" href="https://discord.com/oauth2/authorize?client_id=1448251536491941908">
-    Invite Now
-  </a>
+  <h2>AegisRaidGuard</h2>
+  <p>Advanced Anti-Raid Protection</p>
+  <a class="btn" href="/invite.html">Get Started</a>
 </section>
 
-<section id="features" class="features">
+<section class="features">
   <div class="card">
-    <h3>Real-Time Detection</h3>
-    <p>Instantly detects raids, spam, and suspicious activity.</p>
+    <h3>Real-Time Protection</h3>
+    <p>Detect and stop raids instantly.</p>
   </div>
 
   <div class="card">
-    <h3>Auto Defense</h3>
-    <p>Automatically blocks attackers and protects your server.</p>
-  </div>
-
-  <div class="card">
-    <h3>Smart Security</h3>
-    <p>Advanced systems designed to keep communities safe.</p>
+    <h3>Smart Systems</h3>
+    <p>AI-based detection for threats.</p>
   </div>
 
   <div class="card">
     <h3>Easy Setup</h3>
-    <p>Get protection in seconds with simple commands.</p>
+    <p>Protect your server in seconds.</p>
   </div>
 </section>
 
-<section id="invite" class="hero">
-  <h2>Secure Your Server Now</h2>
-  <a class="btn" href="https://discord.com/oauth2/authorize?client_id=1448251536491941908">
-    Invite AegisRaidGuard
-  </a>
-</section>
-
 <footer>
-  © 2026 Zenith Development Group  
-  <br>
-  zenithdevgroup9@gmail.com
+  © 2026 Zenith Development Group
 </footer>
+
+<script src="script.js"></script>
 
 </body>
 </html>
