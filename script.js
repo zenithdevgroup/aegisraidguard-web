@@ -4,6 +4,7 @@ window.addEventListener("scroll", () => {
     if (rect.top < window.innerHeight - 50) {
       card.style.opacity = 1;
       card.style.transform = "translateY(0)";
+      card.style.transition = "0.5s";
     }
   });
 });
