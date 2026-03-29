@@ -88,6 +88,34 @@ nav a:hover {
   color: #38bdf8;
 }
 
+/* BOTÓN LOGIN DISCORD */
+.login-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 12px 25px;
+  background: linear-gradient(135deg, #5865F2, #404EED);
+  color: #fff;
+  font-weight: bold;
+  border-radius: 10px;
+  text-decoration: none;
+  transition: 0.3s;
+  box-shadow: 0 0 12px rgba(88,101,242,0.5);
+}
+
+.login-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 18px rgba(88,101,242,0.7);
+  background: linear-gradient(135deg, #404EED, #5865F2);
+}
+
+.login-btn svg {
+  width: 20px;
+  height: 20px;
+  fill: #fff;
+}
+
 /* FEATURES */
 .features {
   display: grid;
