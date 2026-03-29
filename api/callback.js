@@ -19,10 +19,8 @@ export default async function handler(req, res) {
     });
 
     const tokenData = await tokenRes.json();
-    console.log("Token Data:", tokenData);
-
     if (!tokenData.access_token) {
-      return res.status(500).send("No se obtuvo access_token: " + JSON.stringify(tokenData));
+      return res.status(500).send("Error obteniendo token: " + JSON.stringify(tokenData));
     }
 
     // Solicitar datos de usuario
@@ -30,10 +28,9 @@ export default async function handler(req, res) {
       headers: { Authorization: `Bearer ${tokenData.access_token}` }
     });
     const userData = await userRes.json();
-    console.log("User Data:", userData);
 
     if (!userData.username) {
-      return res.status(500).send("No se obtuvo usuario: " + JSON.stringify(userData));
+      return res.status(500).send("Error obteniendo usuario: " + JSON.stringify(userData));
     }
 
     // Redirigir con datos
