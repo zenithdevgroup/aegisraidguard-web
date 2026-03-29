@@ -19,6 +19,11 @@
                 <li><a href="#" data-target="view-ajustes">Ajustes del Bot</a></li>
                 <li><a href="/" id="logoutBtn" style="color: var(--danger); margin-top: 2rem;">Cerrar Sesión</a></li>
             </ul>
+            
+            <div class="panic-zone">
+                <button id="panicButton" class="btn-panic">ACTIVAR MODO PÁNICO</button>
+                <p>Bloquea el servidor de inmediato.</p>
+            </div>
         </aside>
 
         <main class="main-content">
@@ -36,77 +41,52 @@
                 <h1 style="margin-bottom: 2rem;">Estado del Sistema</h1>
                 <div class="stats-grid">
                     <div class="stat-card">
-                        <div class="stat-title">Raids Mitigados Globales</div>
+                        <div class="stat-title">Raids Mitigados</div>
                         <div class="stat-value">14,208</div>
                     </div>
                     <div class="stat-card">
-                        <div class="stat-title">Servidores Protegidos</div>
+                        <div class="stat-title">Servidores</div>
                         <div class="stat-value" id="serversCount">--</div>
                     </div>
                     <div class="stat-card">
-                        <div class="stat-title">Ping de la API</div>
-                        <div class="stat-value" style="color: #4ade80;">24ms</div>
+                        <div class="stat-title">Estado Global</div>
+                        <div class="stat-value" style="color: #4ade80;">ÓPTIMO</div>
                     </div>
                 </div>
-                <div class="stat-card" style="min-height: 200px;">
-                    <h3 style="margin-bottom: 1rem; color: var(--text-main);">Actividad Reciente</h3>
-                    <p style="color: var(--text-muted); font-size: 0.95rem;">Sistemas operando en parámetros normales. No se requieren intervenciones manuales.</p>
+                <div class="stat-card">
+                    <h3>Acceso Directo a Whitelist</h3>
+                    <div style="display: flex; gap: 10px; margin-top: 1rem;">
+                        <input type="text" id="whitelistInput" placeholder="ID de Usuario o Rol" class="form-input">
+                        <button class="btn-sm btn-primary" onclick="addToWhitelist()">Añadir</button>
+                    </div>
+                    <div id="whitelistTags" style="margin-top: 10px; display: flex; gap: 5px; flex-wrap: wrap;"></div>
                 </div>
             </section>
 
             <section id="view-features" class="view-section animate-fade-in">
-                <h1 style="margin-bottom: 2rem;">Módulos de Protección</h1>
+                <h1>Módulos de Seguridad</h1>
                 <div class="features-grid">
-                    <div class="feature-card">
-                        <div class="feature-icon">🛡️</div>
-                        <h3>Anti-Raid Core</h3>
-                        <p>Detección inteligente de entrada masiva de bots con verificación captcha automática.</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">⚡</div>
-                        <h3>Fast-Action Logs</h3>
-                        <p>Reportes en tiempo real de cada baneo, borrado o cambio sospechoso en el servidor.</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">🔍</div>
-                        <h3>Link Scanner</h3>
-                        <p>Análisis heurístico de URLs para prevenir ataques de Phishing y Token Grabbing.</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">🤖</div>
-                        <h3>AI Behavior</h3>
-                        <p>Identifica patrones de comportamiento humano vs automatizado para reducir falsos positivos.</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">📦</div>
-                        <h3>Backups Automáticos</h3>
-                        <p>Crea copias de seguridad de roles y permisos cada 24 horas automáticamente.</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">📞</div>
-                        <h3>Alertas Push</h3>
-                        <p>Recibe notificaciones inmediatas en tu dashboard cuando se detecte un ataque crítico.</p>
-                    </div>
+                    <div class="feature-card"><h3>🛡️ Anti-Raid</h3><p>Protección de entradas masivas.</p></div>
+                    <div class="feature-card"><h3>⚡ Fast-Logs</h3><p>Auditoría en milisegundos.</p></div>
+                    <div class="feature-card"><h3>🔍 Phishing</h3><p>Bloqueo de enlaces maliciosos.</p></div>
+                    <div class="feature-card"><h3>🤖 AI-Core</h3><p>Análisis de comportamiento.</p></div>
                 </div>
             </section>
 
             <section id="view-servidores" class="view-section animate-fade-in">
-                <h1 style="margin-bottom: 2rem;">Tus Servidores</h1>
+                <h1>Tus Servidores</h1>
                 <div class="server-grid" id="serversContainer"></div>
             </section>
 
             <section id="view-logs" class="view-section animate-fade-in">
-                <h1 style="margin-bottom: 2rem;">Logs de Seguridad</h1>
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
+                    <h1>Logs de Seguridad</h1>
+                    <input type="text" id="logSearch" placeholder="Buscar por servidor o amenaza..." class="form-input" style="width: 300px;">
+                </div>
                 <div class="stat-card" style="padding: 0; overflow-x: auto;">
                     <table class="logs-table">
                         <thead>
-                            <tr>
-                                <th>Fecha</th>
-                                <th>Servidor</th>
-                                <th>Tipo de Amenaza</th>
-                                <th>Acción Tomada</th>
-                                <th>Estado</th>
-                            </tr>
+                            <tr><th>Fecha</th><th>Servidor</th><th>Amenaza</th><th>Acción</th><th>Estado</th></tr>
                         </thead>
                         <tbody id="logsContainer"></tbody>
                     </table>
@@ -114,22 +94,23 @@
             </section>
 
             <section id="view-ajustes" class="view-section animate-fade-in">
-                <h1 style="margin-bottom: 2rem;">Ajustes Globales</h1>
+                <h1>Configuración Avanzada</h1>
                 <div class="settings-grid">
                     <div class="stat-card setting-item">
                         <div>
-                            <h3>Filtro Anti-Spam</h3>
-                            <p class="setting-desc">Elimina ráfagas de mensajes repetitivos en menos de 3 segundos.</p>
+                            <h3>Nivel de Sensibilidad</h3>
+                            <p class="setting-desc">Ajusta qué tan estricto es el bot ante comportamientos sospechosos.</p>
                         </div>
-                        <label class="switch">
-                            <input type="checkbox" checked>
-                            <span class="slider"></span>
-                        </label>
+                        <select class="form-input" style="width: 120px;">
+                            <option>Bajo</option>
+                            <option selected>Medio</option>
+                            <option>Alto (Paranoico)</option>
+                        </select>
                     </div>
                     <div class="stat-card setting-item">
                         <div>
-                            <h3>Protección Anti-Nuke</h3>
-                            <p class="setting-desc">Bloquea la eliminación masiva de canales y baneos no autorizados.</p>
+                            <h3>Verificación Captcha</h3>
+                            <p class="setting-desc">Obliga a nuevos usuarios a resolver un reto visual si hay riesgo de raid.</p>
                         </div>
                         <label class="switch">
                             <input type="checkbox" checked>
