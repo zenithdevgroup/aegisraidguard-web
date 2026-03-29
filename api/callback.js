@@ -15,7 +15,7 @@ export default async function handler(req, res) {
         grant_type: "authorization_code",
         code,
         redirect_uri: REDIRECT_URI
-      }),
+      }).toString(),
       { headers: { "Content-Type": "application/x-www-form-urlencoded" } }
     );
 
@@ -27,10 +27,10 @@ export default async function handler(req, res) {
 
     // Redirigir a dashboard con datos en query string
     res.redirect(
-      `/dashboard.html?username=${userRes.data.username}&id=${userRes.data.id}&avatar=${userRes.data.avatar}`
+      `/dashboard.html?username=${encodeURIComponent(userRes.data.username)}&id=${userRes.data.id}&avatar=${userRes.data.avatar}`
     );
   } catch (err) {
-    console.error(err);
-    res.send("Error en login");
+    console.error("OAuth Error:", err.response?.data || err.message);
+    res.status(500).send(`Error en login: ${JSON.stringify(err.response?.data || err.message)}`);
   }
 }
