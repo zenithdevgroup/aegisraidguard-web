@@ -12,7 +12,9 @@
 <div class="background"></div>
 
 <nav>
-  <div class="logo">ARG</div>
+  <div class="logo">
+    <div class="logo-box">ARG</div>
+  </div>
   <div>
     <a href="index.html">Home</a>
     <a href="features.html">Features</a>
@@ -23,23 +25,43 @@
 <section class="hero">
   <h2>AegisRaidGuard</h2>
   <p>Advanced Anti-Raid Protection System</p>
-  <a class="btn" href="invite.html">Get Started</a>
+
+  <div class="buttons">
+    <a class="btn" href="invite.html">Invite</a>
+    <a class="btn secondary" href="#">Support Server</a>
+  </div>
 </section>
 
-<section class="features">
-  <div class="card">
-    <h3>Real-Time Protection</h3>
-    <p>Instant detection and blocking of raid attacks.</p>
+<!-- STATS -->
+<section class="stats">
+  <div class="stat">
+    <h3 id="servers">0</h3>
+    <p>Servers Protected</p>
   </div>
 
-  <div class="card">
-    <h3>Smart Security</h3>
-    <p>Advanced systems that adapt to threats.</p>
+  <div class="stat">
+    <h3 id="users">0</h3>
+    <p>Users Secured</p>
   </div>
 
-  <div class="card">
-    <h3>Auto Defense</h3>
-    <p>Automatically protects your server 24/7.</p>
+  <div class="stat">
+    <h3 class="status online"></h3>
+    <p>Bot Status</p>
+  </div>
+</section>
+
+<!-- DASHBOARD STYLE -->
+<section class="dashboard">
+  <h2>Live Protection System</h2>
+
+  <div class="dash-box">
+    <p>Threat Detection</p>
+    <div class="bar"><div class="fill"></div></div>
+  </div>
+
+  <div class="dash-box">
+    <p>Security Level</p>
+    <div class="bar"><div class="fill strong"></div></div>
   </div>
 </section>
 
