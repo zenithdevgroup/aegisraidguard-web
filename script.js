@@ -9,6 +9,10 @@ function showCards() {
   });
 }
 
+document.getElementById("login-btn").addEventListener("click", () => {
+  // Redirige al endpoint de login de Discord
+  window.location.href = "/api/login";
+});
 // al cargar
 window.addEventListener("load", showCards);
 
