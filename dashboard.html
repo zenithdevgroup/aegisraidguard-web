@@ -5,22 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard | AegisRaidGuard</title>
     <link rel="stylesheet" href="/style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="dashboard-container">
         <aside class="sidebar">
             <h2>ARG Panel</h2>
             <ul class="nav-links">
-                <li><a href="#" class="active">Resumen</a></li>
-                <li><a href="#">Servidores</a></li>
-                <li><a href="#">Logs de Seguridad</a></li>
-                <li><a href="#">Ajustes del Bot</a></li>
+                <li><a href="#" class="active" data-target="view-resumen">Resumen</a></li>
+                <li><a href="#" data-target="view-servidores">Servidores</a></li>
+                <li><a href="#" data-target="view-logs">Logs de Seguridad</a></li>
+                <li><a href="#" data-target="view-ajustes">Ajustes del Bot</a></li>
                 <li><a href="/" id="logoutBtn" style="color: var(--danger); margin-top: 2rem;">Cerrar Sesión</a></li>
             </ul>
         </aside>
 
-        <main class="main-content animate-fade-in">
+        <main class="main-content">
             <header class="topbar">
                 <div class="user-profile">
                     <img src="" alt="Avatar" id="userAvatar" class="avatar" style="display: none;">
@@ -31,9 +31,8 @@
                 </div>
             </header>
 
-            <section class="dashboard-core">
+            <section id="view-resumen" class="view-section active animate-fade-in">
                 <h1 style="margin-bottom: 2rem;">Estado del Sistema</h1>
-                
                 <div class="stats-grid">
                     <div class="stat-card">
                         <div class="stat-title">Raids Mitigados Globales</div>
@@ -41,19 +40,80 @@
                     </div>
                     <div class="stat-card">
                         <div class="stat-title">Servidores Protegidos</div>
-                        <div class="stat-value">1,042</div>
+                        <div class="stat-value" id="serversCount">--</div>
                     </div>
                     <div class="stat-card">
                         <div class="stat-title">Ping de la API</div>
                         <div class="stat-value" style="color: #4ade80;">24ms</div>
                     </div>
                 </div>
-
                 <div class="stat-card" style="min-height: 200px;">
-                    <h3 style="margin-bottom: 1rem; color: var(--text-muted);">Actividad Reciente</h3>
-                    <p style="color: #8b9bb4; font-size: 0.9rem;">No se detectaron anomalías en tus servidores configurados en las últimas 24 horas.</p>
+                    <h3 style="margin-bottom: 1rem; color: var(--text-main);">Actividad Reciente</h3>
+                    <p style="color: var(--text-muted); font-size: 0.95rem;">Sistemas operando en parámetros normales. No se requieren intervenciones manuales.</p>
                 </div>
             </section>
+
+            <section id="view-servidores" class="view-section animate-fade-in">
+                <h1 style="margin-bottom: 2rem;">Tus Servidores</h1>
+                <div class="server-grid" id="serversContainer">
+                    </div>
+            </section>
+
+            <section id="view-logs" class="view-section animate-fade-in">
+                <h1 style="margin-bottom: 2rem;">Logs de Seguridad</h1>
+                <div class="stat-card" style="padding: 0; overflow-x: auto;">
+                    <table class="logs-table">
+                        <thead>
+                            <tr>
+                                <th>Fecha</th>
+                                <th>Servidor</th>
+                                <th>Tipo de Amenaza</th>
+                                <th>Acción Tomada</th>
+                                <th>Estado</th>
+                            </tr>
+                        </thead>
+                        <tbody id="logsContainer">
+                            </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section id="view-ajustes" class="view-section animate-fade-in">
+                <h1 style="margin-bottom: 2rem;">Ajustes Globales del Bot</h1>
+                <div class="settings-grid">
+                    <div class="stat-card setting-item">
+                        <div>
+                            <h3>Filtro Anti-Spam (Heurístico)</h3>
+                            <p class="setting-desc">Detecta y elimina ráfagas de mensajes repetitivos en menos de 3 segundos.</p>
+                        </div>
+                        <label class="switch">
+                            <input type="checkbox" checked>
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                    <div class="stat-card setting-item">
+                        <div>
+                            <h3>Protección Anti-Nuke</h3>
+                            <p class="setting-desc">Bloquea la eliminación masiva de canales y baneos no autorizados por administradores comprometidos.</p>
+                        </div>
+                        <label class="switch">
+                            <input type="checkbox" checked>
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                    <div class="stat-card setting-item">
+                        <div>
+                            <h3>Auto-Ban Enlaces Maliciosos</h3>
+                            <p class="setting-desc">Consulta la base de datos global de ARG para banear usuarios que envíen links de phishing.</p>
+                        </div>
+                        <label class="switch">
+                            <input type="checkbox">
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                </div>
+            </section>
+
         </main>
     </div>
     <script src="/script.js"></script>
