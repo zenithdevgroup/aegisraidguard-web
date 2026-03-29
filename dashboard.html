@@ -1,74 +1,61 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Dashboard - AegisRaidGuard</title>
-<link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard | AegisRaidGuard</title>
+    <link rel="stylesheet" href="/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
-
 <body>
+    <div class="dashboard-container">
+        <aside class="sidebar">
+            <h2>ARG Panel</h2>
+            <ul class="nav-links">
+                <li><a href="#" class="active">Resumen</a></li>
+                <li><a href="#">Servidores</a></li>
+                <li><a href="#">Logs de Seguridad</a></li>
+                <li><a href="#">Ajustes del Bot</a></li>
+                <li><a href="/" id="logoutBtn" style="color: var(--danger); margin-top: 2rem;">Cerrar Sesión</a></li>
+            </ul>
+        </aside>
 
-<div class="background"></div>
+        <main class="main-content animate-fade-in">
+            <header class="topbar">
+                <div class="user-profile">
+                    <img src="" alt="Avatar" id="userAvatar" class="avatar" style="display: none;">
+                    <div class="user-info">
+                        <h4 id="userName">Cargando...</h4>
+                        <p id="userId">Autenticando</p>
+                    </div>
+                </div>
+            </header>
 
-<nav>
-  <div class="logo-box">ARG</div>
-  <div>
-    <a href="index.html">Home</a>
-    <a href="features.html">Features</a>
-    <a href="invite.html">Invite</a>
-    <a href="dashboard.html">Dashboard</a>
-  </div>
-</nav>
+            <section class="dashboard-core">
+                <h1 style="margin-bottom: 2rem;">Estado del Sistema</h1>
+                
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-title">Raids Mitigados Globales</div>
+                        <div class="stat-value">14,208</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-title">Servidores Protegidos</div>
+                        <div class="stat-value">1,042</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-title">Ping de la API</div>
+                        <div class="stat-value" style="color: #4ade80;">24ms</div>
+                    </div>
+                </div>
 
-<section class="hero">
-  <h2>Dashboard</h2>
-  <p>Manage your protected servers</p>
-  <h2 id="username"></h2>
-<p>ID: <span id="userid"></span></p>
-<img id="avatar" width="100" />
-
-<script>
-const params = new URLSearchParams(window.location.search);
-document.getElementById("username").textContent = params.get("username");
-document.getElementById("userid").textContent = params.get("id");
-document.getElementById("avatar").src = `https://cdn.discordapp.com/avatars/${params.get("id")}/${params.get("avatar")}.png`;
-</script>
-</section>
-
-<!-- SERVERS -->
-<section class="servers">
-
-  <div class="server-card">
-    <div class="server-info">
-      <h3>My Discord Server</h3>
-      <p>Protection: Active</p>
+                <div class="stat-card" style="min-height: 200px;">
+                    <h3 style="margin-bottom: 1rem; color: var(--text-muted);">Actividad Reciente</h3>
+                    <p style="color: #8b9bb4; font-size: 0.9rem;">No se detectaron anomalías en tus servidores configurados en las últimas 24 horas.</p>
+                </div>
+            </section>
+        </main>
     </div>
-
-    <div class="server-actions">
-      <button>Configure</button>
-      <button class="danger">Disable</button>
-    </div>
-  </div>
-
-  <div class="server-card">
-    <div class="server-info">
-      <h3>Gaming Community</h3>
-      <p>Protection: Active</p>
-    </div>
-
-    <div class="server-actions">
-      <button>Configure</button>
-      <button class="danger">Disable</button>
-    </div>
-  </div>
-
-</section>
-
-<footer>
-  © 2026 Zenith Development Group  
-  <br>zenithdevgroup9@gmail.com
-</footer>
-
+    <script src="/script.js"></script>
 </body>
 </html>
