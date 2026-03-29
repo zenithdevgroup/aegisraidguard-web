@@ -1,85 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AegisRaidGuard</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AegisRaidGuard | The Ultimate Anti-Raid Shield</title>
+    <link rel="stylesheet" href="/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
 </head>
-
 <body>
-
-<div class="background"></div>
-
-<nav>
-  <div class="logo">
-    <div class="logo-box">ARG</div>
-  </div>
-  <div>
-    <a href="index.html">Home</a>
-    <a href="features.html">Features</a>
-    <a href="invite.html">Invite</a>
-    <a href="dashboard.html">Dashboard</a>
-  </div>
-</nav>
-
-<section class="hero">
-  <h2>AegisRaidGuard</h2>
-  <p>Advanced Anti-Raid Protection System</p>
-
-  <div class="buttons">
-    <a class="btn" href="invite.html">Invite</a>
-    <a class="btn secondary" href="#">Support Server</a>
-    <!-- Botón Login con Discord estilizado -->
-    <a href="/api/login" class="login-btn">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 245 240">
-        <path d="M104.4 104.9c-5.7 0-10.2 5-10.2 11.1s4.6 11.1 10.2 11.1c5.7 0 10.2-5 10.2-11.1s-4.6-11.1-10.2-11.1zm36.2 0c-5.7 0-10.2 5-10.2 11.1s4.6 11.1 10.2 11.1c5.7 0 10.2-5 10.2-11.1s-4.6-11.1-10.2-11.1z"/>
-        <path d="M189.5 20h-134C24.3 20 20 24.3 20 29.5v134c0 5.2 4.3 9.5 9.5 9.5h114.2l-5.4-18.8 13 12.1 12.3 11.5 21.8 20.3V29.5c0-5.2-4.3-9.5-9.5-9.5z"/>
-      </svg>
-      Login with Discord
-    </a>
-  </div>
-</section>
-
-<!-- STATS -->
-<section class="stats">
-  <div class="stat">
-    <h3 id="servers">0</h3>
-    <p>Servers Protected</p>
-  </div>
-
-  <div class="stat">
-    <h3 id="users">0</h3>
-    <p>Users Secured</p>
-  </div>
-
-  <div class="stat">
-    <h3 class="status online"></h3>
-    <p>Bot Status</p>
-  </div>
-</section>
-
-<!-- DASHBOARD STYLE -->
-<section class="dashboard">
-  <h2>Live Protection System</h2>
-
-  <div class="dash-box">
-    <p>Threat Detection</p>
-    <div class="bar"><div class="fill"></div></div>
-  </div>
-
-  <div class="dash-box">
-    <p>Security Level</p>
-    <div class="bar"><div class="fill strong"></div></div>
-  </div>
-</section>
-
-<footer>
-  © 2026 Zenith Development Group  
-  <br>zenithdevgroup9@gmail.com
-</footer>
-
-<script src="script.js"></script>
-
+    <main class="hero animate-fade-in">
+        <h1 class="logo-text">AegisRaidGuard</h1>
+        <p class="subtitle">Protección de grado militar para tu comunidad de Discord. Detecta, mitiga y neutraliza ataques raid en tiempo real.</p>
+        
+        <a href="/api/login" class="btn">
+            <svg width="24" height="24" viewBox="0 0 127.14 96.36" fill="#fff" xmlns="http://www.w3.org/2000/svg">
+                <path d="M107.7 8.07A105.15 105.15 0 0 0 81.47 0a72.06 72.06 0 0 0-3.36 6.83 109.27 109.27 0 0 0-29.08 0 72.37 72.37 0 0 0-3.36-6.83 105.15 105.15 0 0 0-26.23 8.07C3.4 29.33-3.1 50.15 1.5 70.62a105.43 105.43 0 0 0 32.17 16.15 77.7 77.7 0 0 0 6.89-11.11 68.42 68.42 0 0 1-10.85-5.18c.91-.66 1.8-1.34 2.66-2a75.57 75.57 0 0 0 64.32 0c.87.71 1.76 1.39 2.66 2a67.55 67.55 0 0 1-10.87 5.19 77 77 0 0 0 6.89 11.1 105.25 105.25 0 0 0 32.19-16.14c5.33-23.36-3.08-44.15-20.02-62.56zM42.63 58.07c-5.36 0-9.8-4.93-9.8-10.95s4.35-10.95 9.8-10.95c5.5 0 9.87 4.98 9.8 10.95 0 6.02-4.34 10.95-9.8 10.95zm41.88 0c-5.36 0-9.8-4.93-9.8-10.95s4.35-10.95 9.8-10.95c5.5 0 9.87 4.98 9.8 10.95 0 6.02-4.35 10.95-9.8 10.95z"/>
+            </svg>
+            Iniciar sesión con Discord
+        </a>
+    </main>
+    <script src="/script.js"></script>
 </body>
 </html>
