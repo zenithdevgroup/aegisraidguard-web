@@ -52,6 +52,7 @@ nav a:hover {
   color: black;
   border-radius: 8px;
   text-decoration: none;
+  display: inline-block;
   transition: 0.2s;
 }
 
@@ -71,11 +72,15 @@ nav a:hover {
   background: #020617;
   padding: 25px;
   border-radius: 12px;
-  transition: 0.2s;
+  transition: 0.3s;
+  border: 1px solid transparent;
+  opacity: 0;
+  transform: translateY(30px);
 }
 
 .card:hover {
-  transform: translateY(-5px);
+  transform: translateY(-8px);
+  border: 1px solid #38bdf8;
 }
 
 /* FOOTER */
