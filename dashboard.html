@@ -13,6 +13,7 @@
             <h2>ARG Panel</h2>
             <ul class="nav-links">
                 <li><a href="#" class="active" data-target="view-resumen">Resumen</a></li>
+                <li><a href="#" data-target="view-features">Funcionalidades</a></li>
                 <li><a href="#" data-target="view-servidores">Servidores</a></li>
                 <li><a href="#" data-target="view-logs">Logs de Seguridad</a></li>
                 <li><a href="#" data-target="view-ajustes">Ajustes del Bot</a></li>
@@ -53,10 +54,45 @@
                 </div>
             </section>
 
+            <section id="view-features" class="view-section animate-fade-in">
+                <h1 style="margin-bottom: 2rem;">Módulos de Protección</h1>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">🛡️</div>
+                        <h3>Anti-Raid Core</h3>
+                        <p>Detección inteligente de entrada masiva de bots con verificación captcha automática.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">⚡</div>
+                        <h3>Fast-Action Logs</h3>
+                        <p>Reportes en tiempo real de cada baneo, borrado o cambio sospechoso en el servidor.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🔍</div>
+                        <h3>Link Scanner</h3>
+                        <p>Análisis heurístico de URLs para prevenir ataques de Phishing y Token Grabbing.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🤖</div>
+                        <h3>AI Behavior</h3>
+                        <p>Identifica patrones de comportamiento humano vs automatizado para reducir falsos positivos.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">📦</div>
+                        <h3>Backups Automáticos</h3>
+                        <p>Crea copias de seguridad de roles y permisos cada 24 horas automáticamente.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">📞</div>
+                        <h3>Alertas Push</h3>
+                        <p>Recibe notificaciones inmediatas en tu dashboard cuando se detecte un ataque crítico.</p>
+                    </div>
+                </div>
+            </section>
+
             <section id="view-servidores" class="view-section animate-fade-in">
                 <h1 style="margin-bottom: 2rem;">Tus Servidores</h1>
-                <div class="server-grid" id="serversContainer">
-                    </div>
+                <div class="server-grid" id="serversContainer"></div>
             </section>
 
             <section id="view-logs" class="view-section animate-fade-in">
@@ -72,19 +108,18 @@
                                 <th>Estado</th>
                             </tr>
                         </thead>
-                        <tbody id="logsContainer">
-                            </tbody>
+                        <tbody id="logsContainer"></tbody>
                     </table>
                 </div>
             </section>
 
             <section id="view-ajustes" class="view-section animate-fade-in">
-                <h1 style="margin-bottom: 2rem;">Ajustes Globales del Bot</h1>
+                <h1 style="margin-bottom: 2rem;">Ajustes Globales</h1>
                 <div class="settings-grid">
                     <div class="stat-card setting-item">
                         <div>
-                            <h3>Filtro Anti-Spam (Heurístico)</h3>
-                            <p class="setting-desc">Detecta y elimina ráfagas de mensajes repetitivos en menos de 3 segundos.</p>
+                            <h3>Filtro Anti-Spam</h3>
+                            <p class="setting-desc">Elimina ráfagas de mensajes repetitivos en menos de 3 segundos.</p>
                         </div>
                         <label class="switch">
                             <input type="checkbox" checked>
@@ -94,26 +129,15 @@
                     <div class="stat-card setting-item">
                         <div>
                             <h3>Protección Anti-Nuke</h3>
-                            <p class="setting-desc">Bloquea la eliminación masiva de canales y baneos no autorizados por administradores comprometidos.</p>
+                            <p class="setting-desc">Bloquea la eliminación masiva de canales y baneos no autorizados.</p>
                         </div>
                         <label class="switch">
                             <input type="checkbox" checked>
                             <span class="slider"></span>
                         </label>
                     </div>
-                    <div class="stat-card setting-item">
-                        <div>
-                            <h3>Auto-Ban Enlaces Maliciosos</h3>
-                            <p class="setting-desc">Consulta la base de datos global de ARG para banear usuarios que envíen links de phishing.</p>
-                        </div>
-                        <label class="switch">
-                            <input type="checkbox">
-                            <span class="slider"></span>
-                        </label>
-                    </div>
                 </div>
             </section>
-
         </main>
     </div>
     <script src="/script.js"></script>
