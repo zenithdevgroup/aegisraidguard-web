@@ -25,7 +25,10 @@ export default async function handler(req, res) {
       headers: { Authorization: `Bearer ${access_token}` }
     });
 
-    res.redirect(`/dashboard.html?username=${userRes.data.username}&id=${userRes.data.id}&avatar=${userRes.data.avatar}`);
+    // Redirigir a dashboard con datos en query string
+    res.redirect(
+      `/dashboard.html?username=${userRes.data.username}&id=${userRes.data.id}&avatar=${userRes.data.avatar}`
+    );
   } catch (err) {
     console.error(err);
     res.send("Error en login");
