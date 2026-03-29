@@ -24,6 +24,16 @@
 <section class="hero">
   <h2>Dashboard</h2>
   <p>Manage your protected servers</p>
+  <h2 id="username"></h2>
+<p>ID: <span id="userid"></span></p>
+<img id="avatar" width="100" />
+
+<script>
+const params = new URLSearchParams(window.location.search);
+document.getElementById("username").textContent = params.get("username");
+document.getElementById("userid").textContent = params.get("id");
+document.getElementById("avatar").src = `https://cdn.discordapp.com/avatars/${params.get("id")}/${params.get("avatar")}.png`;
+</script>
 </section>
 
 <!-- SERVERS -->
