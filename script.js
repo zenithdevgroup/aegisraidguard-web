@@ -1,42 +1,56 @@
-// mostrar cards inmediatamente si ya están visibles
-function showCards() {
-  document.querySelectorAll(".card").forEach(card => {
-    const rect = card.getBoundingClientRect();
-    if (rect.top < window.innerHeight) {
-      card.style.opacity = 1;
-      card.style.transform = "translateY(0)";
-    }
-  });
-}
+document.addEventListener('DOMContentLoaded', () => {
+    // Verificar si estamos en el dashboard
+    if (window.location.pathname.includes('dashboard')) {
+        const urlParams = new URLSearchParams(window.location.search);
+        
+        const userId = urlParams.get('id');
+        const username = urlParams.get('username');
+        const globalName = urlParams.get('global_name');
+        const avatarHash = urlParams.get('avatar');
 
-document.getElementById("login-btn").addEventListener("click", () => {
-  // Redirige al endpoint de login de Discord
-  window.location.href = "/api/login";
+        if (userId && username) {
+            // Guardar sesión en sessionStorage
+            sessionStorage.setItem('arg_user', JSON.stringify({ userId, username, globalName, avatarHash }));
+            
+            // Limpiar la URL para que no queden expuestos los parámetros (UX/UI Clean)
+            window.history.replaceState({}, document.title, window.location.pathname);
+            
+            renderUserProfile(userId, username, globalName, avatarHash);
+        } else {
+            // Si no hay params, intentar recuperar de la sesión
+            const sessionData = JSON.parse(sessionStorage.getItem('arg_user'));
+            if (sessionData) {
+                renderUserProfile(sessionData.userId, sessionData.username, sessionData.globalName, sessionData.avatarHash);
+            } else {
+                // Si no hay sesión, devolver al index
+                window.location.href = '/';
+            }
+        }
+    }
+
+    // Botón de Logout
+    const logoutBtn = document.getElementById('logoutBtn');
+    if (logoutBtn) {
+        logoutBtn.addEventListener('click', (e) => {
+            sessionStorage.removeItem('arg_user');
+        });
+    }
 });
-// al cargar
-window.addEventListener("load", showCards);
 
-// al hacer scroll
-window.addEventListener("scroll", showCards);
+function renderUserProfile(id, username, globalName, avatarHash) {
+    const nameEl = document.getElementById('userName');
+    const idEl = document.getElementById('userId');
+    const avatarEl = document.getElementById('userAvatar');
 
-// CONTADOR
-function animateValue(id, start, end, duration) {
-  let range = end - start;
-  let current = start;
-  let increment = end > start ? 1 : -1;
-  let stepTime = Math.abs(Math.floor(duration / range));
-  let obj = document.getElementById(id);
+    nameEl.textContent = globalName || username;
+    idEl.textContent = `ID: ${id}`;
 
-  if (!obj) return;
-
-  let timer = setInterval(() => {
-    current += increment;
-    obj.textContent = current.toLocaleString();
-    if (current == end) {
-      clearInterval(timer);
+    if (avatarHash) {
+        avatarEl.src = `https://cdn.discordapp.com/avatars/${id}/${avatarHash}.png`;
+    } else {
+        // Fallback default de Discord si no tiene avatar
+        const defaultAvatarIndex = (BigInt(id) >> 22n) % 6n;
+        avatarEl.src = `https://cdn.discordapp.com/embed/avatars/${defaultAvatarIndex}.png`;
     }
-  }, stepTime);
+    avatarEl.style.display = 'block';
 }
-
-animateValue("servers", 0, 1287, 2000);
-animateValue("users", 0, 54213, 2000);
